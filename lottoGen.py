@@ -1,4 +1,5 @@
 import tkinter as tk
+from random import sample
 
 # This creates the window object for the application
 window = tk.Tk()
@@ -32,6 +33,33 @@ resetNumbers.grid(row = 2, column = 6, columnspan = 2)
 
 
 
+resetNumbers.configure(state = tk.DISABLED)
+
+
+
+def pickNumbers():
+    numbers = sample( range(1, 59), 6)
+    label1.configure(text = numbers[0])
+    label2.configure(text = numbers[1])
+    label3.configure(text = numbers[2])
+    label4.configure(text = numbers[3])
+    label5.configure(text = numbers[4])
+    label6.configure(text = numbers[5])
+    getNumbers.configure( state = tk.DISABLED)
+    resetNumbers .configure( state = tk.NORMAL)
+
+def reset():
+    label1.configure(text = '...')
+    label2.configure(text = '...')
+    label3.configure(text = '...')
+    label4.configure(text = '...')
+    label5.configure(text = '...')
+    label6.configure(text = '...')
+    getNumbers.configure( state = tk.NORMAL)
+    resetNumbers .configure( state = tk.DISABLED)
+
+getNumbers.configure( command = pickNumbers)
+resetNumbers .configure( command = reset)
 
 
 # The mainloop syntax sustains the window being open for the application
